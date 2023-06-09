@@ -19,6 +19,7 @@
 		B88A503A2A30C59400480811 /* ImagenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88A50392A30C59400480811 /* ImagenViewController.swift */; };
 		B88A503C2A30D63100480811 /* ElegirUsuarioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88A503B2A30D63100480811 /* ElegirUsuarioViewController.swift */; };
 		B88A50422A30F3B200480811 /* Usuario.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88A50412A30F3B200480811 /* Usuario.swift */; };
+		B89B45012A338EA3006F13BA /* CrearUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89B45002A338EA3006F13BA /* CrearUserViewController.swift */; };
 		E68AFCD27820EABC31D2DD36 /* Pods_Snapchat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72141DAB894A9B514146E7C0 /* Pods_Snapchat.framework */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +41,7 @@
 		B88A503B2A30D63100480811 /* ElegirUsuarioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElegirUsuarioViewController.swift; sourceTree = "<group>"; };
 		B88A503E2A30EEAD00480811 /* Snapchat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Snapchat.entitlements; sourceTree = "<group>"; };
 		B88A50412A30F3B200480811 /* Usuario.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Usuario.swift; sourceTree = "<group>"; };
+		B89B45002A338EA3006F13BA /* CrearUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrearUserViewController.swift; sourceTree = "<group>"; };
 		D64C66FBF899FB0C13BA8B04 /* Pods-Snapchat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Snapchat.release.xcconfig"; path = "Target Support Files/Pods-Snapchat/Pods-Snapchat.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -113,6 +115,7 @@
 			children = (
 				B88A50392A30C59400480811 /* ImagenViewController.swift */,
 				B88A50372A30BFDF00480811 /* SnapsViewController.swift */,
+				B89B45002A338EA3006F13BA /* CrearUserViewController.swift */,
 				B83AEBB32A290E02009F25DD /* iniciarSesionViewController.swift */,
 				B88A503B2A30D63100480811 /* ElegirUsuarioViewController.swift */,
 			);
@@ -249,6 +252,7 @@
 				B83AEBB42A290E02009F25DD /* iniciarSesionViewController.swift in Sources */,
 				B83AEBB02A290E02009F25DD /* AppDelegate.swift in Sources */,
 				B88A503A2A30C59400480811 /* ImagenViewController.swift in Sources */,
+				B89B45012A338EA3006F13BA /* CrearUserViewController.swift in Sources */,
 				B83AEBC62A2913CE009F25DD /* TelefonoViewController.swift in Sources */,
 				B83AEBB22A290E02009F25DD /* SceneDelegate.swift in Sources */,
 			);
