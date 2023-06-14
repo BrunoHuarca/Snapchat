@@ -11,12 +11,24 @@
         <!--Snaps View Controller-->
         <scene sceneID="Dt7-sp-Vut">
             <objects>
-                <viewController id="8xd-Xt-LWB" customClass="SnapsViewController" customModule="Snapchat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="8xd-Xt-LWB" customClass="SnapsViewController" customModule="Snapchat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eGs-6v-Zme">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="gUc-tN-ekM">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Yma-vn-tcc"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="gUc-tN-ekM" firstAttribute="top" secondItem="Yma-vn-tcc" secondAttribute="top" id="Gxb-Kr-iGa"/>
+                            <constraint firstItem="Yma-vn-tcc" firstAttribute="trailing" secondItem="gUc-tN-ekM" secondAttribute="trailing" id="ah6-HS-9GE"/>
+                            <constraint firstItem="gUc-tN-ekM" firstAttribute="leading" secondItem="Yma-vn-tcc" secondAttribute="leading" id="wOU-ch-SR0"/>
+                            <constraint firstItem="Yma-vn-tcc" firstAttribute="bottom" secondItem="gUc-tN-ekM" secondAttribute="bottom" id="yh9-54-7Nk"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="NzZ-8M-3PQ">
                         <barButtonItem key="leftBarButtonItem" title="Cerrar Session" id="rXK-Vb-BPi">
@@ -30,6 +42,10 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tablaSnaps" destination="gUc-tN-ekM" id="aq8-fP-Vxq"/>
+                        <segue destination="8pT-Dm-HxY" kind="show" identifier="versnapsegue" id="ry5-Pw-OTh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kaz-MM-h1a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -82,11 +98,18 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Enviar Mensaje" id="m8y-0a-P3b">
-                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="camera" id="SlR-bC-qo5">
-                            <connections>
-                                <action selector="camaraTapped:" destination="aar-Tj-W4N" id="60s-bL-vSi"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Item" systemItem="camera" id="SlR-bC-qo5">
+                                <connections>
+                                    <action selector="camaraTapped:" destination="aar-Tj-W4N" id="60s-bL-vSi"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="organize" id="g3K-Ac-c8u">
+                                <connections>
+                                    <action selector="mediaTapped:" destination="aar-Tj-W4N" id="jHg-Af-uRx"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="descripcionTextField" destination="kDz-B0-MfO" id="wOw-lw-4SV"/>
@@ -129,6 +152,54 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l5E-Kg-RML" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2488" y="-585"/>
+        </scene>
+        <!--Ver Snap View Controller-->
+        <scene sceneID="w0l-Zs-xLD">
+            <objects>
+                <viewController id="8pT-Dm-HxY" customClass="VerSnapViewController" customModule="Snapchat" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qbw-0C-GmA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mensaje:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VrW-gh-HAm">
+                                <rect key="frame" x="20" y="138" width="69" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Imagen Enviada:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tLe-yY-utQ">
+                                <rect key="frame" x="20" y="189" width="125" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BEb-Ql-uQw">
+                                <rect key="frame" x="20" y="250" width="374" height="312"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ZAM-uc-83N"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ZAM-uc-83N" firstAttribute="trailing" secondItem="BEb-Ql-uQw" secondAttribute="trailing" constant="20" id="APC-wn-vBG"/>
+                            <constraint firstItem="tLe-yY-utQ" firstAttribute="top" secondItem="VrW-gh-HAm" secondAttribute="bottom" constant="30" id="FBx-cL-HLa"/>
+                            <constraint firstItem="BEb-Ql-uQw" firstAttribute="centerX" secondItem="qbw-0C-GmA" secondAttribute="centerX" id="Ie4-QS-ltb"/>
+                            <constraint firstItem="tLe-yY-utQ" firstAttribute="leading" secondItem="ZAM-uc-83N" secondAttribute="leading" constant="20" id="Lpr-KP-EIL"/>
+                            <constraint firstItem="VrW-gh-HAm" firstAttribute="top" secondItem="ZAM-uc-83N" secondAttribute="top" constant="50" id="TDL-64-Auv"/>
+                            <constraint firstItem="BEb-Ql-uQw" firstAttribute="leading" secondItem="ZAM-uc-83N" secondAttribute="leading" constant="20" id="h2y-D2-ncH"/>
+                            <constraint firstItem="VrW-gh-HAm" firstAttribute="leading" secondItem="ZAM-uc-83N" secondAttribute="leading" constant="20" id="oQp-wg-Tup"/>
+                            <constraint firstItem="BEb-Ql-uQw" firstAttribute="top" secondItem="tLe-yY-utQ" secondAttribute="bottom" constant="40" id="soc-mC-6Br"/>
+                            <constraint firstItem="ZAM-uc-83N" firstAttribute="bottom" secondItem="BEb-Ql-uQw" secondAttribute="bottom" constant="300" id="u5n-ly-HXB"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="kJa-rM-skf"/>
+                    <connections>
+                        <outlet property="imageView" destination="BEb-Ql-uQw" id="Ce0-F6-WFc"/>
+                        <outlet property="lblMensaje" destination="VrW-gh-HAm" id="rYt-pc-SIP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="orh-Y6-FEU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1007" y="-1251"/>
         </scene>
         <!--Crear User View Controller-->
         <scene sceneID="fCi-rb-bqc">
