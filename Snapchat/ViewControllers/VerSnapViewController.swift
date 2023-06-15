@@ -1,46 +1,63 @@
-//
-//  VerSnapViewController.swift
-//  Snapchat
-//
-//  Created by Mac 06 on 14/06/23.
-//
 
 import UIKit
 import SDWebImage
 import FirebaseDatabase
 import FirebaseAuth
 import FirebaseStorage
+import AVFAudio
+import AVFoundation
 
 class VerSnapViewController: UIViewController {
 
     @IBOutlet weak var lblMensaje: UILabel!
     @IBOutlet weak var imageView: UIImageView!
-    var snap = Snap()
+    var snap: Snap?
+    var audioPlayer: AVAudioPlayer?
+    @IBOutlet weak var reproducirButton: UIButton!
+    
+    @IBAction func reproducirAudioTapped(_ sender: Any) {
+        if let audioURLString = snap?.audioURL, let audioURL = URL(string: audioURLString) {
+                    downloadAndPlayAudio(from: audioURL)
+                }
+    }
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        lblMensaje.text = "Mensaje: " + snap.descrip
-        imageView.sd_setImage(with: URL(string: snap.imagenURL), completed: nil)
-
-        // Do any additional setup after loading the view.
-    }
-    override func viewWillDisappear(_ animated: Bool) {
-        Database.database().reference().child("usuarios").child((Auth.auth().currentUser?.uid)!).child("snaps").child(snap.id).removeValue()
+            super.viewDidLoad()
+            lblMensaje.text = "Mensaje: " + (snap?.descripcion ?? "")
+            imageView.sd_setImage(with: URL(string: snap?.imagenURL ?? ""), completed: nil)
+        }
         
-        Storage.storage().reference().child("imagenes").child("\(snap.imagenID).jpg").delete
-            { (error) in
-            print("Se elimino la imagen correctamente")
+        override func viewWillDisappear(_ animated: Bool) {
+            super.viewWillDisappear(animated)
+            
+            if let snapID = snap?.id {
+                Database.database().reference().child("usuarios").child((Auth.auth().currentUser?.uid)!).child("snaps").child(snapID).removeValue()
+            }
+            
+            if let imagenID = snap?.imagenID {
+                Storage.storage().reference().child("imagenes").child("\(imagenID).jpg").delete { (error) in
+                    if let error = error {
+                        print("Error al eliminar la imagen: \(error)")
+                    } else {
+                        print("Se eliminó la imagen correctamente")
+                    }
+                }
+            }
+        }
+        
+        private func downloadAndPlayAudio(from url: URL) {
+            URLSession.shared.dataTask(with: url) { [weak self] (data, response, error) in
+                guard let data = data, error == nil else {
+                    print("Error al descargar el audio: \(error?.localizedDescription ?? "")")
+                    return
+                }
+                
+                do {
+                    self?.audioPlayer = try AVAudioPlayer(data: data)
+                    self?.audioPlayer?.play()
+                } catch {
+                    print("Error al reproducir el audio: \(error.localizedDescription)")
+                }
+            }.resume()
         }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-}

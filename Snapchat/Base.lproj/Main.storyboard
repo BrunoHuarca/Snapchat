@@ -73,7 +73,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9JJ-OO-RjB">
-                                <rect key="frame" x="87" y="305" width="240" height="31"/>
+                                <rect key="frame" x="87" y="404" width="240" height="31"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Elegir Contacto">
@@ -83,44 +83,58 @@
                                     <action selector="elegirContactoTapped:" destination="aar-Tj-W4N" eventType="touchUpInside" id="4Ab-K8-mTJ"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nfa-Ue-Tw3">
+                                <rect key="frame" x="173" y="302" width="68.5" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Grabar"/>
+                                <connections>
+                                    <action selector="grabarTapped:" destination="aar-Tj-W4N" eventType="touchUpInside" id="Zgm-6n-VBB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r4T-Vy-VYb">
+                                <rect key="frame" x="159.5" y="353" width="95" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Reproducir"/>
+                                <connections>
+                                    <action selector="reproducirAudioTapped:" destination="aar-Tj-W4N" eventType="touchUpInside" id="g4h-20-ver"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="YYc-jV-RpC"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="r4T-Vy-VYb" firstAttribute="top" secondItem="Nfa-Ue-Tw3" secondAttribute="bottom" constant="20" id="1pK-IG-b3D"/>
+                            <constraint firstItem="9JJ-OO-RjB" firstAttribute="top" secondItem="r4T-Vy-VYb" secondAttribute="bottom" constant="20" id="Fth-rG-HkB"/>
                             <constraint firstItem="kDz-B0-MfO" firstAttribute="centerX" secondItem="S8c-86-cBx" secondAttribute="centerX" id="HPE-j7-eTi"/>
                             <constraint firstItem="9JJ-OO-RjB" firstAttribute="width" secondItem="kDz-B0-MfO" secondAttribute="width" id="Hfb-Q7-0yy"/>
+                            <constraint firstItem="Nfa-Ue-Tw3" firstAttribute="top" secondItem="kDz-B0-MfO" secondAttribute="bottom" constant="17" id="Iol-a1-ild"/>
                             <constraint firstItem="kDz-B0-MfO" firstAttribute="width" secondItem="Gm7-Zn-oOM" secondAttribute="width" id="JP3-BB-Pi3"/>
                             <constraint firstItem="Gm7-Zn-oOM" firstAttribute="top" secondItem="YYc-jV-RpC" secondAttribute="top" constant="20" id="Rty-Hs-lQd"/>
+                            <constraint firstItem="r4T-Vy-VYb" firstAttribute="centerX" secondItem="S8c-86-cBx" secondAttribute="centerX" id="VAc-1Z-9MV"/>
                             <constraint firstItem="Gm7-Zn-oOM" firstAttribute="centerX" secondItem="S8c-86-cBx" secondAttribute="centerX" id="Wxf-r0-Ipa"/>
-                            <constraint firstItem="9JJ-OO-RjB" firstAttribute="top" secondItem="kDz-B0-MfO" secondAttribute="bottom" constant="20" id="diq-yk-YV5"/>
                             <constraint firstItem="kDz-B0-MfO" firstAttribute="top" secondItem="Gm7-Zn-oOM" secondAttribute="bottom" constant="15" id="f47-qJ-7OX"/>
                             <constraint firstItem="9JJ-OO-RjB" firstAttribute="centerX" secondItem="S8c-86-cBx" secondAttribute="centerX" id="oA8-ax-kt1"/>
+                            <constraint firstItem="Nfa-Ue-Tw3" firstAttribute="centerX" secondItem="S8c-86-cBx" secondAttribute="centerX" id="rRi-AR-POB"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Enviar Mensaje" id="m8y-0a-P3b">
-                        <rightBarButtonItems>
-                            <barButtonItem title="Item" systemItem="camera" id="SlR-bC-qo5">
-                                <connections>
-                                    <action selector="camaraTapped:" destination="aar-Tj-W4N" id="60s-bL-vSi"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem systemItem="organize" id="g3K-Ac-c8u">
-                                <connections>
-                                    <action selector="mediaTapped:" destination="aar-Tj-W4N" id="jHg-Af-uRx"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" systemItem="organize" id="g3K-Ac-c8u">
+                            <connections>
+                                <action selector="camaraTapped:" destination="aar-Tj-W4N" id="h88-Ew-Q5l"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="descripcionTextField" destination="kDz-B0-MfO" id="wOw-lw-4SV"/>
                         <outlet property="elegirContactoBoton" destination="9JJ-OO-RjB" id="lEX-F3-VzQ"/>
+                        <outlet property="grabarButton" destination="Nfa-Ue-Tw3" id="i39-pH-qf2"/>
                         <outlet property="imageView" destination="Gm7-Zn-oOM" id="fIN-81-vdw"/>
                         <segue destination="GTP-ez-g9p" kind="show" identifier="seleccionarContactoSegue" id="r3C-eV-ZLS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bZL-I5-4gO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1772" y="-574"/>
+            <point key="canvasLocation" x="1790" y="-600"/>
         </scene>
         <!--Lista de Usuarios-->
         <scene sceneID="7eh-N6-0ft">
@@ -176,6 +190,16 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BEb-Ql-uQw">
                                 <rect key="frame" x="20" y="250" width="374" height="312"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9p7-Kg-ubu">
+                                <rect key="frame" x="20" y="612" width="374" height="31"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Reproducir audio"/>
+                                <connections>
+                                    <action selector="reproducirAudioTapped:" destination="8pT-Dm-HxY" eventType="touchUpInside" id="Dvz-zS-meZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ZAM-uc-83N"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -183,10 +207,13 @@
                             <constraint firstItem="ZAM-uc-83N" firstAttribute="trailing" secondItem="BEb-Ql-uQw" secondAttribute="trailing" constant="20" id="APC-wn-vBG"/>
                             <constraint firstItem="tLe-yY-utQ" firstAttribute="top" secondItem="VrW-gh-HAm" secondAttribute="bottom" constant="30" id="FBx-cL-HLa"/>
                             <constraint firstItem="BEb-Ql-uQw" firstAttribute="centerX" secondItem="qbw-0C-GmA" secondAttribute="centerX" id="Ie4-QS-ltb"/>
+                            <constraint firstItem="9p7-Kg-ubu" firstAttribute="width" secondItem="BEb-Ql-uQw" secondAttribute="width" id="JJv-1A-un2"/>
                             <constraint firstItem="tLe-yY-utQ" firstAttribute="leading" secondItem="ZAM-uc-83N" secondAttribute="leading" constant="20" id="Lpr-KP-EIL"/>
+                            <constraint firstItem="9p7-Kg-ubu" firstAttribute="top" secondItem="BEb-Ql-uQw" secondAttribute="bottom" constant="50" id="Sag-JG-2LN"/>
                             <constraint firstItem="VrW-gh-HAm" firstAttribute="top" secondItem="ZAM-uc-83N" secondAttribute="top" constant="50" id="TDL-64-Auv"/>
                             <constraint firstItem="BEb-Ql-uQw" firstAttribute="leading" secondItem="ZAM-uc-83N" secondAttribute="leading" constant="20" id="h2y-D2-ncH"/>
                             <constraint firstItem="VrW-gh-HAm" firstAttribute="leading" secondItem="ZAM-uc-83N" secondAttribute="leading" constant="20" id="oQp-wg-Tup"/>
+                            <constraint firstItem="9p7-Kg-ubu" firstAttribute="centerX" secondItem="qbw-0C-GmA" secondAttribute="centerX" id="orc-JL-PlD"/>
                             <constraint firstItem="BEb-Ql-uQw" firstAttribute="top" secondItem="tLe-yY-utQ" secondAttribute="bottom" constant="40" id="soc-mC-6Br"/>
                             <constraint firstItem="ZAM-uc-83N" firstAttribute="bottom" secondItem="BEb-Ql-uQw" secondAttribute="bottom" constant="300" id="u5n-ly-HXB"/>
                         </constraints>
@@ -195,11 +222,12 @@
                     <connections>
                         <outlet property="imageView" destination="BEb-Ql-uQw" id="Ce0-F6-WFc"/>
                         <outlet property="lblMensaje" destination="VrW-gh-HAm" id="rYt-pc-SIP"/>
+                        <outlet property="reproducirButton" destination="9p7-Kg-ubu" id="a19-CZ-nD0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="orh-Y6-FEU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1007" y="-1251"/>
+            <point key="canvasLocation" x="1007" y="-1313"/>
         </scene>
         <!--Crear User View Controller-->
         <scene sceneID="fCi-rb-bqc">
@@ -521,7 +549,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="dz4-y4-QJl"/>
+        <segue reference="cpg-hv-6VE"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="user" width="200" height="200"/>
